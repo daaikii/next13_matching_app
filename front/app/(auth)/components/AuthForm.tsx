@@ -25,11 +25,11 @@ const Auth = () => {
     }
   }, [session?.status, router]);
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
     if (!isLogin) {
       axios
-        .post("/api/register/register", data)
+        .post("/api/register", data)
         .then(() => signIn("credentials", { ...data, redirect: false }))
         .then((res) => {
           if (res?.error) {
@@ -39,7 +39,7 @@ const Auth = () => {
             router.push("/work");
           }
         })
-        .catch((error) => toast.error("Error!!!!!"))
+        .catch((error) => toast.error(`${error}`))
         .finally(() => setIsLoading(false));
     }
     if (isLogin) {
