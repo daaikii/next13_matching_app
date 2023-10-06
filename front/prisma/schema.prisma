@@ -49,11 +49,11 @@ model Account {
 
 model Work {
   id              String   @id @default(cuid())
-  title           String?
-  body            String?
-  imageURL        String?
+  title           String
+  body            String
+  imageURL        String
   createdAt       DateTime @default(now())
-  matchState      Boolean?
+  matchState      Boolean
   recruitmentUser String?
 
   entryUsers  User[] @relation("entry")
