@@ -1,0 +1,31 @@
+.work_box {
+  &_item {
+    border: solid 2px;
+    border-radius: 50px;
+    display: flex;
+    overflow: hidden;
+  }
+  &_matched {
+    background-color: rgba(255, 255, 255, .291);
+  }
+  &_image {
+    height: 70px;
+    object-fit: cover;
+    width: 150px;
+  }
+  &_text {
+    padding: 0 10px;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .work_box {
+    &_image {
+      height: 70px;
+      width: 250px;
+    }
+    &_text {
+      padding: 0 30px;
+    }
+  }
+}

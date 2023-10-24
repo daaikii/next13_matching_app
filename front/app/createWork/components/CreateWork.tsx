@@ -1,14 +1,18 @@
-"use client";
+import styles from "./CreateWork.module.scss"
+
 import { useState } from "react";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
 import Input from "@/app/components/ui/Input";
+import FileInput from "@/app/components/ui/FileInput"
 import uploadImageToS3 from "@/app/lib/uploadImageToS3";
+import Button from "@/app/components/ui/Button";
 
 const CreateWork = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [imageState, setImageState] = useState(false)
 
   const router = useRouter();
 
@@ -16,6 +20,7 @@ const CreateWork = () => {
     register,
     handleSubmit,
     formState: { errors },
+    watch
   } = useForm();
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -31,16 +36,24 @@ const CreateWork = () => {
     router.push("/work/listType/author");
   };
 
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value && watch("image").item(0).name) {
+      setImageState(true)
+    }
+  }
+
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Input
+    <div className={styles.creatework}>
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <FileInput
           disabled={isLoading}
           register={register}
           errors={errors}
           type="file"
           id="image"
           label="image"
+          onChange={onChange}
+          imageState={imageState}
         />
         <Input
           disabled={isLoading}
@@ -54,13 +67,13 @@ const CreateWork = () => {
           disabled={isLoading}
           register={register}
           errors={errors}
-          type="text"
+          type="textarea"
           id="body"
           label="body"
         />
-        <button>投稿</button>
+        <Button disabled={isLoading} type="button">POST</Button>
       </form>
-    </>
+    </div>
   );
 };
 

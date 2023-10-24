@@ -1,3 +1,5 @@
+import styles from "./Input.module.scss"
+
 import React from "react";
 import { UseFormRegister, FieldValues, FieldErrors } from "react-hook-form";
 
@@ -19,15 +21,24 @@ const Input: React.FC<AuthFormProps> = ({
   label,
 }) => {
   return (
-    <div className={`${disabled ? "disabled" : ""}`}>
-      <label htmlFor={label}>{label}</label>
-      {errors.id && <span>This field is required</span>}
-      <input
-        type={type}
-        id={id}
-        disabled={disabled}
-        {...register(id, { required: true })}
-      />
+    <div className={styles.input}>
+      {errors[id] && <span className={styles.input_error}>※This field is required</span>}
+      <label className={styles.input_label} htmlFor={id}>{label}</label>
+      {type === "textarea"
+        ? <textarea
+          className={styles.input_textarea}
+          id={id}
+          disabled={disabled}
+          {...register(id, { required: true, maxLength: 200 })}
+        />
+        : <input
+          className={styles.input_input}
+          type={type}
+          id={id}
+          disabled={disabled}
+          {...register(id, { required: true })}
+        />
+      }
     </div>
   );
 };

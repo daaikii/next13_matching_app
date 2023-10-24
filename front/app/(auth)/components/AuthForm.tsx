@@ -1,5 +1,7 @@
 "use client";
 
+import styles from "./AuthForm.module.scss"
+
 import React, { useState, useEffect } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { FcGoogle } from "react-icons/fc";
@@ -11,6 +13,7 @@ import { useRouter } from "next/navigation";
 
 import AuthSocialButton from "./AuthSocialButton";
 import Input from "@/app/components/ui/Input";
+import Button from "@/app/components/ui/Button"
 
 const Auth = () => {
   const router = useRouter();
@@ -75,9 +78,9 @@ const Auth = () => {
   } = useForm();
 
   return (
-    <>
-      <div>
-        <form>
+    <div className={styles.auth}>
+      <div className={styles.auth_inner}>
+        <form className={styles.auth_form}>
           <Input
             disabled={isLoading}
             register={register}
@@ -104,27 +107,34 @@ const Auth = () => {
             id="password"
             label="password"
           />
-          <button onClick={handleSubmit(onSubmit)}>
-            {isLogin ? "ログイン" : "アカウント作成"}
-          </button>
+          <Button
+            type="button"
+            onClick={handleSubmit(onSubmit)}
+            disabled={isLoading}
+          >
+            {isLogin ? "LOGIN" : "LEGISTER"}
+          </Button>
         </form>
-      </div>
-      {isLogin && (
-        <div>
-          <AuthSocialButton
-            onClick={() => socialClick("google")}
-            icon={FcGoogle}
-          />
-          <AuthSocialButton
-            onClick={() => socialClick("github")}
-            icon={BsGithub}
-          />
+        {isLogin && (
+          <div className={styles.auth_social}>
+            <AuthSocialButton
+              onClick={() => socialClick("google")}
+              icon={FcGoogle}
+            />
+            <AuthSocialButton
+              onClick={() => socialClick("github")}
+              icon={BsGithub}
+            />
+          </div>
+        )}
+        <div className={styles.auth_change}>
+          {isLogin ? <p>アカウント作成へ</p> : <p>アカウントをお持ちの場合</p>}
+          <p className={styles.auth_change_link} onClick={() => setIsLogin(!isLogin)}>
+            {isLogin ? "register" : "login"}
+          </p>
         </div>
-      )}
-      <p onClick={() => setIsLogin(!isLogin)}>
-        {isLogin ? "アカウント作成" : "ログイン"}
-      </p>
-    </>
+      </div>
+    </div>
   );
 };
 

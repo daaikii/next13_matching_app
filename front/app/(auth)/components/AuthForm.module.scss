@@ -1,0 +1,37 @@
+.auth {
+  margin-top: 200px;
+  padding: 0;
+  &_inner {
+    border-radius: 20px;
+    box-shadow: none;
+    padding: 30px;
+    text-align: center;
+  }
+  &_form_button {
+    height: 30px;
+    margin-top: 20px;
+    width: 200px;
+  }
+  &_social {
+    margin-top: 30px;
+  }
+  &_change {
+    margin-top: 30px;
+    width: 100%;
+    &_link {
+      color: lightblue;
+      &:hover {
+        color: aquamarine;
+      }
+    }
+  }
+}
+
+@media screen and (min-width:1280px) {
+  .auth {
+    padding: 0 450px;
+    &_inner {
+      box-shadow: 0 5px 25px 0 rgba(0,0,0,.5);
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { S3 } from "aws-sdk"
 import { PutObjectRequest } from "aws-sdk/clients/s3";
+import toast from "react-hot-toast";
 
 const s3 = new S3({
   accessKeyId: process.env.NEXT_PUBLIC_APP_AWS_ACCESS_KEY,
@@ -22,7 +23,7 @@ const uploadImageToS3 = async (file: File) => {
     const data = await s3.upload(params).promise();
     return data.Location;
   } catch (error) {
-    console.error('画像アップロードエラー:', error);
+    toast.error("画像のアップロードに失敗しました")
     return null;
   }
 };

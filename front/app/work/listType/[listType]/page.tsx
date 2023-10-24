@@ -7,11 +7,8 @@ type Props = {
 };
 
 const WorkListPage = ({ params }: Props) => {
-  return (
-    <>
-      <WorkList listType={params.listType} />
-    </>
-  );
+  return <WorkList listType={params.listType} />
+
 };
 
 export default WorkListPage;

@@ -1,4 +1,4 @@
-import React from "react";
+import styles from "@/app/components/ui/Button.module.scss"
 
 type ButtonProps = {
   children?: React.ReactNode;
@@ -9,7 +9,11 @@ type ButtonProps = {
 
 const Button = ({ children, onClick, type, disabled }: ButtonProps) => {
   return (
-    <button onClick={onClick} type={type}>
+    <button
+      className={styles.button}
+      onClick={onClick}
+      type={type}
+      disabled={disabled}>
       {children}
     </button>
   );

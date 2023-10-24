@@ -1,11 +1,8 @@
+"use client"
 import CreateWork from "./components/CreateWork";
 
 const CreateWorkPage = () => {
-  return (
-    <>
-      <CreateWork />
-    </>
-  );
+  return <CreateWork />
 };
 
 export default CreateWorkPage;

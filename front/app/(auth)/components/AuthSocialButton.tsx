@@ -1,4 +1,6 @@
 "use client";
+import styles from "./AuthSocialButton.module.scss"
+
 import React from "react";
 import { IconType } from "react-icons";
 
@@ -9,7 +11,7 @@ type AuthSocialButtonProps = {
 
 const AuthSocialButton = ({ onClick, icon: Icon }: AuthSocialButtonProps) => {
   return (
-    <button onClick={onClick}>
+    <button className={styles.auth_socialbutton} onClick={onClick}>
       <Icon />
     </button>
   );

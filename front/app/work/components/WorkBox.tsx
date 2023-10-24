@@ -1,19 +1,33 @@
+"use client"
+
+import styles from "./WorkBox.module.scss"
+
 import Link from "next/link";
 import Image from "next/image";
 
 import { Work } from "@prisma/client";
 
+
 const WorkBox = ({ matchState, id, imageURL, title, body }: Work) => {
   return (
-    <li className={`workBox ${matchState && "red"}`} key={id}>
-      <Link href={`/selectWork/${id}`}>
-        <Image src={imageURL} alt="work image" width={400} height={400} />
-        <div className="workText">
-          <h2>{title}</h2>
-          <p>{body}</p>
+    <Link href={`/selectWork/${id}`}>
+      <li
+        className={`${styles.work_box_item} ${matchState && styles.work_box_matched}`}
+        key={id}
+      >
+        <Image
+          className={styles.work_box_image}
+          src={imageURL}
+          alt="work image"
+          width={200}
+          height={200}
+        />
+        <div className={styles.work_box_text}>
+          <h2 className={styles.work_box_title}>{title}</h2>
+          <p className={styles.work_box_body}>{body}</p>
         </div>
-      </Link>
-    </li>
+      </li>
+    </Link>
   );
 };
 
