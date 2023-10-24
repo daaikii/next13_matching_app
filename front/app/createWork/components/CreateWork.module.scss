@@ -1,0 +1,22 @@
+.creatework {
+  margin: 0 auto;
+  margin-top: 300px;
+  max-width: 1500px;
+  min-height: 100%;
+}
+
+.form {
+  border-radius: 20px;
+  box-shadow: none ;
+  padding: 30px;
+  text-align: center;
+}
+
+@media screen and (min-width:1280px) {
+  .creatework {
+    padding: 0 450px;
+  }
+  .form {
+    box-shadow: 0 5px 25px 0 rgba(0,0,0,.5);
+  }
+}

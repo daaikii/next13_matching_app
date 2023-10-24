@@ -1,0 +1,17 @@
+.input {
+  margin-top: 20px;
+  &_label {
+    display: block;
+  }
+  &_input {
+    height: 30px;
+    width: 300px;
+  }
+  &_error {
+    color: red;
+  }
+  &_textarea {
+    height: 100px;
+    width: 300px;
+  }
+}
