@@ -59,6 +59,6 @@ model Work {
   entryUsers  User[] @relation("entry")
   followUsers User[] @relation("follow")
 
-  authorId String @unique
+  authorId String
   author   User   @relation(fields: [authorId], references: [id])
 }
