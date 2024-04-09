@@ -71,7 +71,7 @@ const CreateWork = () => {
           id="body"
           label="body"
         />
-        <Button disabled={isLoading} type="button">POST</Button>
+        <Button disabled={isLoading} type="submit">POST</Button>
       </form>
     </div>
   );

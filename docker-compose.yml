@@ -4,7 +4,7 @@ services:
     build: .
     volumes:
       - ./front:/front
-      - /front/node_modules:/front/node_modules
+      - node_modules:/front/node_modules
     working_dir: /front
     tty: true
     ports:
@@ -14,8 +14,11 @@ services:
   db:
     image: postgres:16.0
     volumes: 
-      - ./front/db:/var/lib/postgresql/data
+      - db:/var/lib/postgresql/data
     env_file:
       - ./front/.env
     ports:
       - 5432:5432
+volumes:
+  node_modules:
+  db:

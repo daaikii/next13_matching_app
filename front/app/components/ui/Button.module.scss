@@ -13,4 +13,18 @@
     color: aquamarine;
     cursor: pointer;
   }
+  &_disabled{
+    background-color: white;
+    border: 2px solid #c0c0c0;
+    border-radius: 100vh;
+    color: #c0c0c0;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: .5rem 2rem;
+    transition: .5s;
+    width: 200px;
+    &:hover{
+      cursor: default;
+    }
+  }
 }
